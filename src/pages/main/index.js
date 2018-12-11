@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import api from '../../services/api'
 
+import "./styles.css"
+
 export default class Main extends Component{
 
     //Variavel de estado é um objeto e armazena qualquer variável
@@ -25,11 +27,18 @@ export default class Main extends Component{
         console.log(response.data.docs)
     };
     render(){
+
+        const {products} = this.state
+
         //return <h1>Total de produtos: {this.state.products.length}</h1>
         return(
-            <div className="products-list">
-                {this.state.products.map(product=>(
-                    <h2 key={product._id}>{product.title}</h2>
+            <div className="product-list">
+                {products.map(product=>(
+                    <article key={product._id}>
+                        <strog>{product.title}</strog>
+                        <p>{product.description}</p>
+                        <a href="">Acessar</a>
+                    </article>
                 ))}
             </div>
         )
